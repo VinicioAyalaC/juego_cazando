@@ -23,7 +23,7 @@ function graficarRectangulo(x,y,ancho,alto,color){
 }
 
 // FUNCION PARA GRAFICAR GATO
-function graficarGato(){
+function graficarGato(){    
     graficarRectangulo(gatox,gatoy,ANCHOGATO,ALTURAGATO,"#000000");
 }
 
@@ -46,52 +46,50 @@ function iniciarJuego(){
     graficarComida();
 }
 
-// MOVIMIENTO DEL GATO
-function mover(direccion){
-    if (direccion === "arriba") gatoy -= VELOCIDAD;     
-    if (direccion === "abajo") gatoy += VELOCIDAD;     
-    if (direccion === "izquierda") gatox -= VELOCIDAD;     
-    if (direccion === "derecha") gatox += VELOCIDAD;
-    graficarGato();
-}
-
 function limpiarCanva(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
+const LIMITE_X = canvas.width - ANCHOGATO; 
+const LIMITE_Y = canvas.height - ALTURAGATO;
+
 function moverIzquierda(){
-    gatox-=10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
+    if(gatox>0){
+        gatox-=10;
+        limpiarCanva();
+        graficarGato();
+        graficarComida();
+    }
 }
 
 function moverDerecha(){
-    gatox += 10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
+    if (gatox<LIMITE_X){
+        gatox += 10;
+        limpiarCanva();
+        graficarGato();
+        graficarComida();
+    }
 }
 
 function moverArriba(){
-    gatoy -= 10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
+    if(gatoy>0){
+        gatoy -= 10;
+        limpiarCanva();
+        graficarGato();
+        graficarComida();
+    }
 }
 
 function moverAbajo(){
-    gatoy += 10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
+    if(gatoy<LIMITE_Y){
+        gatoy += 10;
+        limpiarCanva();
+        graficarGato();
+        graficarComida();
+    }
 }
-
-
 
 document.getElementById("btnArriba").onclick = () => moverArriba();
 document.getElementById("btnAbajo").onclick = () => moverAbajo();
 document.getElementById("btnIzquierda").onclick = () => moverIzquierda();
 document.getElementById("btnDerecha").onclick = () => moverDerecha();
-
-iniciarJuego();
