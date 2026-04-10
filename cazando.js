@@ -66,11 +66,32 @@ function moverIzquierda(){
     graficarComida();
 }
 
+function moverDerecha(){
+    gatox += 10;
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+}
+
+function moverArriba(){
+    gatoy -= 10;
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+}
+
+function moverAbajo(){
+    gatoy += 10;
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+}
 
 
-document.getElementById("btnArriba").onclick = () => mover("arriba");
-document.getElementById("btnAbajo").onclick = () => mover("abajo");
+
+document.getElementById("btnArriba").onclick = () => moverArriba();
+document.getElementById("btnAbajo").onclick = () => moverAbajo();
 document.getElementById("btnIzquierda").onclick = () => moverIzquierda();
-document.getElementById("btnDerecha").onclick = () => mover("derecha");
+document.getElementById("btnDerecha").onclick = () => moverDerecha();
 
 iniciarJuego();
