@@ -1,6 +1,5 @@
-let canvas = document.getElementById("juego");
+let canvas = document.getElementById("areaJuego");
 let ctx = canvas.getContext("2d");
-
 
 // GATO
 let gatox=0;
@@ -35,8 +34,13 @@ function graficarComida(){
 
 // FUNCION INICIAR JUEGO
 function iniciarJuego(){
+    // gato al centro del rectangulo
     gatox = (canvas.width / 2) - (ANCHOGATO / 2);     
     gatoy = (canvas.height / 2) - (ALTURAGATO / 2);
+
+    //COMIDA ESQUINA INFERIOR DERECHA
+    comidax = canvas.width - ANCHOCOMIDA;
+    comiday = canvas.height - ALTURACOMIDA;
 
     graficarGato();
     graficarComida();
@@ -51,10 +55,22 @@ function mover(direccion){
     graficarGato();
 }
 
+function limpiarCanva(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+function moverIzquierda(){
+    gatox-=10;
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+}
+
+
+
 document.getElementById("btnArriba").onclick = () => mover("arriba");
 document.getElementById("btnAbajo").onclick = () => mover("abajo");
-document.getElementById("btnIzquierda").onclick = () => mover("izquierda");
+document.getElementById("btnIzquierda").onclick = () => moverIzquierda();
 document.getElementById("btnDerecha").onclick = () => mover("derecha");
-
 
 iniciarJuego();
