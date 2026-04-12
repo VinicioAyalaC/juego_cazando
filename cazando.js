@@ -6,6 +6,7 @@ let gatox=0;
 let gatoy=0;
 let puntosGato=0;
 let tiempo=10;
+let temporizador;
 
 const ANCHOGATO=50;
 const ALTURAGATO=50;
@@ -104,9 +105,8 @@ function detectarColision(){
             comidax=generarAleatorio(0,canvas.width - ANCHOCOMIDA);
             comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
             graficarComida();
-            incrementarPuntos(); 
-            
-            
+            incrementarPuntos();
+            tiempo=10;
     }
 }
 
@@ -121,13 +121,21 @@ function cargarGraficos(){
 function incrementarPuntos(){
     puntosGato+=1;
     mostrarEnSpan("puntos",puntosGato);
+    if(puntosGato>=6){
+        alert("+++GANASTE+++");
+        clearInterval(temporizador);
+    }    
 }
 
 function restarTiempo(){
     tiempo-=1;
     mostrarEnSpan("tiempo",tiempo);
+    if(tiempo<=0){
+        alert("+++GAME OVER+++");
+        clearInterval(temporizador);
+    }
 }
 
-setInterval(function(){
+temporizador=setInterval(function(){
     restarTiempo();
 },1000);
