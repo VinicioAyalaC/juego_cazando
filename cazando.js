@@ -5,6 +5,7 @@ let ctx = canvas.getContext("2d");
 let gatox=0;
 let gatoy=0;
 let puntosGato=0;
+let tiempo=10;
 
 const ANCHOGATO=50;
 const ALTURAGATO=50;
@@ -121,3 +122,12 @@ function incrementarPuntos(){
     puntosGato+=1;
     mostrarEnSpan("puntos",puntosGato);
 }
+
+function restarTiempo(){
+    tiempo-=1;
+    mostrarEnSpan("tiempo",tiempo);
+}
+
+setInterval(function(){
+    restarTiempo();
+},1000);
