@@ -16,7 +16,7 @@ const ALTURACOMIDA=30;
 
 //ctx.fillStyle = "#be2222";
 
-// FUNCION PRINCIPAL PARA GRAFICAR
+// FUNCION PRINCIPAL PARA GRAFICAR EL GATO Y LA COMIDA
 function graficarRectangulo(x,y,ancho,alto,color){
     ctx.fillStyle = color;
     ctx.fillRect(x,y,ancho,alto);
@@ -32,6 +32,12 @@ function graficarComida(){
     graficarRectangulo(comidax,comiday,ANCHOCOMIDA,ALTURACOMIDA,"#ff0000");
 }
 
+// LIMPIAR EL CANVAS "PANTALLA DE 500X500"
+function limpiarCanva(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+
 // FUNCION INICIAR JUEGO
 function iniciarJuego(){
     // gato al centro del rectangulo
@@ -41,16 +47,15 @@ function iniciarJuego(){
     //COMIDA ESQUINA INFERIOR DERECHA
     //comidax = canvas.width - ANCHOCOMIDA;
     //comiday = canvas.height - ALTURACOMIDA;
-    comidax=generarAleatorio(0,500-ANCHOCOMIDA);
-    comiday=generarAleatorio(0,500-ALTURACOMIDA);
+    comidax=generarAleatorio(0,canvas.width - ANCHOCOMIDA);
+    comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
 
     graficarGato();
     graficarComida();
 }
 
-function limpiarCanva(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-}
+
+
 
 const LIMITE_X = canvas.width - ANCHOGATO; 
 const LIMITE_Y = canvas.height - ALTURAGATO;
@@ -58,40 +63,28 @@ const LIMITE_Y = canvas.height - ALTURAGATO;
 function moverIzquierda(){
     if(gatox>0){
         gatox-=10;
-        limpiarCanva();
-        graficarGato();
-        graficarComida();
-        detectarColision();
+        cargarGraficos();
     }
 }
 
 function moverDerecha(){
     if (gatox<LIMITE_X){
         gatox += 10;
-        limpiarCanva();
-        graficarGato();
-        graficarComida();
-        detectarColision();
+       cargarGraficos();
     }
 }
 
 function moverArriba(){
     if(gatoy>0){
         gatoy -= 10;
-        limpiarCanva();
-        graficarGato();
-        graficarComida();
-        detectarColision();
+        cargarGraficos();
     }
 }
 
 function moverAbajo(){
     if(gatoy<LIMITE_Y){
         gatoy += 10;
-        limpiarCanva();
-        graficarGato();
-        graficarComida();
-        detectarColision();
+        cargarGraficos();
     }
 }
 
@@ -110,8 +103,17 @@ function detectarColision(){
             limpiarCanva(); 
             graficarGato();
 
-            comidax=generarAleatorio(0,500-ANCHOCOMIDA);
-            comiday=generarAleatorio(0,500-ALTURACOMIDA);
+            comidax=generarAleatorio(0,canvas.width - ANCHOCOMIDA);
+            comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
             graficarComida();      
     }
 }
+
+
+function cargarGraficos(){
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+    detectarColision();
+}
+
