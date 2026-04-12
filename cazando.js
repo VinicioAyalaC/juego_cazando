@@ -51,9 +51,11 @@ function iniciarJuego(){
     //COMIDA EN UNA COORDENADA   ALEATORIA
     comidax=generarAleatorio(0,canvas.width - ANCHOCOMIDA);
     comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
-
+    
     graficarGato();
     graficarComida();
+    //incrementarPuntos();
+    //restarTiempo();
 }
 
 const LIMITE_X = canvas.width - ANCHOGATO; 
@@ -91,6 +93,7 @@ document.getElementById("btnArriba").onclick = () => moverArriba();
 document.getElementById("btnAbajo").onclick = () => moverAbajo();
 document.getElementById("btnIzquierda").onclick = () => moverIzquierda();
 document.getElementById("btnDerecha").onclick = () => moverDerecha();
+document.getElementById("btnReiniciar").onclick = () => reiniciarJuego();
 
 function detectarColision(){
     if(comidax+ANCHOCOMIDA > gatox &&
@@ -109,7 +112,6 @@ function detectarColision(){
             tiempo=10;
     }
 }
-
 
 function cargarGraficos(){
     limpiarCanva();
@@ -139,3 +141,11 @@ function restarTiempo(){
 temporizador=setInterval(function(){
     restarTiempo();
 },1000);
+
+function reiniciarJuego(){    
+    puntosGato=0;
+    tiempo=10;
+    cargarGraficos();
+    mostrarEnSpan("puntos",puntosGato);
+    mostrarEnSpan("tiempo",tiempo);
+}
