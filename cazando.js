@@ -59,6 +59,7 @@ function moverIzquierda(){
         limpiarCanva();
         graficarGato();
         graficarComida();
+        detectarColision();
     }
 }
 
@@ -68,6 +69,7 @@ function moverDerecha(){
         limpiarCanva();
         graficarGato();
         graficarComida();
+        detectarColision();
     }
 }
 
@@ -77,6 +79,7 @@ function moverArriba(){
         limpiarCanva();
         graficarGato();
         graficarComida();
+        detectarColision();
     }
 }
 
@@ -86,6 +89,7 @@ function moverAbajo(){
         limpiarCanva();
         graficarGato();
         graficarComida();
+        detectarColision();
     }
 }
 
@@ -93,3 +97,13 @@ document.getElementById("btnArriba").onclick = () => moverArriba();
 document.getElementById("btnAbajo").onclick = () => moverAbajo();
 document.getElementById("btnIzquierda").onclick = () => moverIzquierda();
 document.getElementById("btnDerecha").onclick = () => moverDerecha();
+
+function detectarColision(){
+    if(comidax+ANCHOCOMIDA > gatox &&
+       comidax <  gatox+ANCHOGATO && 
+       comiday+ALTURACOMIDA > gatoy &&
+       comiday < gatoy+ALTURAGATO){
+            alert("++++ TE ATRAPÉ ++++");
+        
+    }
+}
