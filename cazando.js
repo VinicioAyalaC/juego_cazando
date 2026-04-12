@@ -39,8 +39,10 @@ function iniciarJuego(){
     gatoy = (canvas.height / 2) - (ALTURAGATO / 2);
 
     //COMIDA ESQUINA INFERIOR DERECHA
-    comidax = canvas.width - ANCHOCOMIDA;
-    comiday = canvas.height - ALTURACOMIDA;
+    //comidax = canvas.width - ANCHOCOMIDA;
+    //comiday = canvas.height - ALTURACOMIDA;
+    comidax=generarAleatorio(0,500-ANCHOCOMIDA);
+    comiday=generarAleatorio(0,500-ALTURACOMIDA);
 
     graficarGato();
     graficarComida();
@@ -104,6 +106,12 @@ function detectarColision(){
        comiday+ALTURACOMIDA > gatoy &&
        comiday < gatoy+ALTURAGATO){
             alert("++++ TE ATRAPÉ ++++");
-        
+            // aparecer en otro lado 
+            limpiarCanva(); 
+            graficarGato();
+
+            comidax=generarAleatorio(0,500-ANCHOCOMIDA);
+            comiday=generarAleatorio(0,500-ALTURACOMIDA);
+            graficarComida();      
     }
 }
