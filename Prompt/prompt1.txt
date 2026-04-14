@@ -1,0 +1,7 @@
+- Prompt #1
+
+tengo este codigo, necesito modificar el .css para dar un estilo de juego moderno al html, utilizar una paleta de colores que vaya en tonos morado.
+
+
+- Prompt #2
+
