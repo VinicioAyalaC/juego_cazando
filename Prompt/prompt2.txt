@@ -1,0 +1,6 @@
+- Prompt #1
+
+incluir una imagen de fondo que se llama "fondoJuego01.png".
+
+- Prompt #2
+

@@ -4,10 +4,11 @@
 body {
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  /* Fondo con degradado animado en tonos morados */
-  background: linear-gradient(-45deg, #240046, #3c096c, #5a189a, #7b2cbf);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  /* Ruta a tu imagen */
+  background: linear-gradient(rgba(36, 0, 70, 0.7), rgba(36, 0, 70, 0.7)),url('fondoJuego01.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
   margin: 0;
   padding: 20px;
   color: #fff;
@@ -56,7 +57,7 @@ p {
 }
 
 canvas {
-  background: #ecebee;
+  background: #9d8ac3;
   border: 4px solid #9d4edd;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
