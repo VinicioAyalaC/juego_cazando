@@ -23,13 +23,9 @@ let comiday=50;
 const ANCHOCOMIDA=30;
 const ALTURACOMIDA=30;
 
-//ctx.fillStyle = "#be2222";
+let imgRaton = new Image();     // Creamos objeto imagen
+imgRaton.src = "raton.png";
 
-// FUNCION PRINCIPAL PARA GRAFICAR EL GATO Y LA COMIDA
-function graficarRectangulo(x,y,ancho,alto,color){
-    ctx.fillStyle = color;
-    ctx.fillRect(x,y,ancho,alto); 
-}
 
 
 // FUNCION PARA GRAFICAR GATO
@@ -47,7 +43,8 @@ function graficarImagen(imagen, x, y, ancho, alto){
 
 // FUNCION PARA GRAFICAR COMIDA
 function graficarComida(){
-    graficarRectangulo(comidax,comiday,ANCHOCOMIDA,ALTURACOMIDA,"#ff0000");
+   // Dibujamos el ratón en lugar del rectángulo
+    graficarImagen(imgRaton, comidax, comiday, ANCHOCOMIDA, ALTURACOMIDA);
 }
 
 // LIMPIAR EL CANVAS "PANTALLA DE 500X500"
