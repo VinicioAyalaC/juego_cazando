@@ -8,6 +8,9 @@ let puntosGato=0;
 let tiempo=15;
 let temporizador;
 
+let imgGato = new Image(); // Creamos un objeto imagen
+imgGato.src = "gato.png";  // Ruta de la imagen
+
 let disminuirTiempo=0;
 
 const ANCHOGATO=50;
@@ -25,13 +28,22 @@ const ALTURACOMIDA=30;
 // FUNCION PRINCIPAL PARA GRAFICAR EL GATO Y LA COMIDA
 function graficarRectangulo(x,y,ancho,alto,color){
     ctx.fillStyle = color;
-    ctx.fillRect(x,y,ancho,alto);
+    ctx.fillRect(x,y,ancho,alto); 
 }
 
+
 // FUNCION PARA GRAFICAR GATO
-function graficarGato(){    
-    graficarRectangulo(gatox,gatoy,ANCHOGATO,ALTURAGATO,"#000000");
+function graficarGato(){ 
+    graficarImagen(imgGato, gatox, gatoy, ANCHOGATO, ALTURAGATO);
 }
+
+
+// FUNCION PARA DIBUJAR IMAGEN (REEMPLAZA RECTANGULO)
+function graficarImagen(imagen, x, y, ancho, alto){
+    ctx.drawImage(imagen, x, y, ancho, alto);
+}
+
+
 
 // FUNCION PARA GRAFICAR COMIDA
 function graficarComida(){
@@ -46,6 +58,7 @@ function limpiarCanva(){
 
 // FUNCION INICIAR JUEGO
 function iniciarJuego(){
+   
     // gato al centro del rectangulo
     gatox = (canvas.width/2) - (ANCHOGATO / 2);     
     gatoy = (canvas.height/2) - (ALTURAGATO / 2);
@@ -56,8 +69,7 @@ function iniciarJuego(){
     
     graficarGato();
     graficarComida();
-    //incrementarPuntos();
-    //restarTiempo();
+  
 }
 
 const LIMITE_X = canvas.width - ANCHOGATO; 
@@ -149,6 +161,15 @@ function reiniciarJuego(){
     puntosGato=0;
     tiempo=15;
     disminuirTiempo=0;
+
+    // Reposicionar gato
+    gatox = (canvas.width/2) - (ANCHOGATO / 2);     
+    gatoy = (canvas.height/2) - (ALTURAGATO / 2);
+
+    // Reposicionar comida
+    comidax = generarAleatorio(0,canvas.width - ANCHOCOMIDA);
+    comiday = generarAleatorio(0,canvas.height - ALTURACOMIDA);
+
     cargarGraficos();
     mostrarEnSpan("puntos",puntosGato);
     mostrarEnSpan("tiempo",tiempo);
