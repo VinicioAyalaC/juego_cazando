@@ -5,7 +5,7 @@ let ctx = canvas.getContext("2d");
 let gatox=0;
 let gatoy=0;
 let puntosGato=0;
-let tiempo=10;
+let tiempo=15;
 let temporizador;
 
 const ANCHOGATO=50;
@@ -45,8 +45,8 @@ function limpiarCanva(){
 // FUNCION INICIAR JUEGO
 function iniciarJuego(){
     // gato al centro del rectangulo
-    gatox = (canvas.width) - (ANCHOGATO / 2);     
-    gatoy = (canvas.height) - (ALTURAGATO / 2);
+    gatox = (canvas.width/2) - (ANCHOGATO / 2);     
+    gatoy = (canvas.height/2) - (ALTURAGATO / 2);
 
     //COMIDA EN UNA COORDENADA   ALEATORIA
     comidax=generarAleatorio(0,canvas.width - ANCHOCOMIDA);
@@ -109,7 +109,7 @@ function detectarColision(){
             comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
             graficarComida();
             incrementarPuntos();
-            tiempo=10;
+            tiempo=15;
     }
 }
 
@@ -144,7 +144,7 @@ temporizador=setInterval(function(){
 
 function reiniciarJuego(){    
     puntosGato=0;
-    tiempo=10;
+    tiempo=15;
     cargarGraficos();
     mostrarEnSpan("puntos",puntosGato);
     mostrarEnSpan("tiempo",tiempo);
