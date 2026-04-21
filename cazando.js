@@ -8,6 +8,8 @@ let puntosGato=0;
 let tiempo=15;
 let temporizador;
 
+let disminuirTiempo=0;
+
 const ANCHOGATO=50;
 const ALTURAGATO=50;
 const VELOCIDAD=15;
@@ -109,7 +111,8 @@ function detectarColision(){
             comiday=generarAleatorio(0,canvas.height - ALTURACOMIDA);
             graficarComida();
             incrementarPuntos();
-            tiempo=15;
+            disminuirTiempo++;
+            tiempo=15-disminuirTiempo;
     }
 }
 
@@ -145,6 +148,7 @@ temporizador=setInterval(function(){
 function reiniciarJuego(){    
     puntosGato=0;
     tiempo=15;
+    disminuirTiempo=0;
     cargarGraficos();
     mostrarEnSpan("puntos",puntosGato);
     mostrarEnSpan("tiempo",tiempo);
